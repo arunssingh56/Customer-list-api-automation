@@ -1,10 +1,8 @@
-name: Run Postman Collections
+name: Run Postman Collections (Manual)
 
+# ✅ Manual trigger only
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   run-collections:
