@@ -25,7 +25,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"searchText\": \"\",\r\n        \"contentType\": \"ALL\"\r\n    },\r\n    \"type\": \"DASHBOARD\",\r\n    \"pagination\": {\r\n        \"pageSize\": 20,\r\n        \"pageIndex\": 1\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"searchText\": \"\",\r\n        \"contentType\": \"ALL\"\r\n    },\r\n    \"type\": \"DASHBOARD\",\r\n    \"pagination\": {\r\n        \"pageSize\": 20,\r\n        \"pageIndex\": 1\r\n    }\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
