@@ -526,7 +526,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 9591,\r\n        \"listName\": \"shashank1\"\r\n    }\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
