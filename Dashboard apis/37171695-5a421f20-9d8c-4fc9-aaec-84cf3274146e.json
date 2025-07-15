@@ -96,7 +96,7 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "bulk-downloads-list",
 			"id": "37171695-9704038c-b7e2-47f6-8ab2-de959ec5ffd2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
