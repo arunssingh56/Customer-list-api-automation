@@ -133,7 +133,13 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"pagination\": {\r\n        \"pageSize\": 3\r\n    },\r\n    \"type\": \"DASHBOARD\"\r\n}",
