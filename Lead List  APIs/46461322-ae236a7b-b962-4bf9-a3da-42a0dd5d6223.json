@@ -546,6 +546,47 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "account-upload-temp Copy",
+			"id": "46461322-a9d16673-02e9-4d5d-96aa-0c42c48ae03f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "// ------WebKitFormBoundarywdNShbNukD5s8dCq\r\n// Content-Disposition: form-data; name=\"file\"; filename=\"Account-Sample-File.csv\"\r\n// Content-Type: text/csv\r\n\r\n\r\n// ------WebKitFormBoundarywdNShbNukD5s8dCq--",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}customer-list/v1/account-list/account-upload-temp",
+					"host": [
+						"{{base-url}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-list",
+						"account-upload-temp"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
