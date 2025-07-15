@@ -411,12 +411,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-details-count",
+					"raw": "{{base-url}}customer-list/v1/lead-list/lead-details-count",
 					"host": [
-						"{{base-url}}"
+						"{{base-url}}customer-list"
 					],
 					"path": [
-						"customer-list",
 						"v1",
 						"lead-list",
 						"lead-details-count"
