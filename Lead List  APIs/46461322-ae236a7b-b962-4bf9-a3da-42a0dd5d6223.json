@@ -453,12 +453,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-delete",
+					"raw": "{{base-url}}customer-list/v1/lead-list/lead-delete",
 					"host": [
-						"{{base-url}}"
+						"{{base-url}}customer-list"
 					],
 					"path": [
-						"customer-list",
 						"v1",
 						"lead-list",
 						"lead-delete"
