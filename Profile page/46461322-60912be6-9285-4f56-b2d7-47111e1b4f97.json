@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "46461322-60912be6-9285-4f56-b2d7-47111e1b4f97",
+		"name": "Profile Page",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "lead-list-by-reveal-id",
+			"id": "46461322-02d99e35-25c8-4d39-8eab-a52319fd40d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"guidId\": \"8ADF9AA21AB00D8B3964D79BD0F8DF2E\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/lead-list/lead-list-by-reveal-id",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"lead-list",
+						"lead-list-by-reveal-id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lists-by-guid",
+			"id": "46461322-1b39155a-c4a8-4a42-b9e6-05a185ab6ae5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"guid\": \"840A8DB9959DDB3C\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-list/lists-by-guid",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-list",
+						"lists-by-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account-lists-count-guids",
+			"id": "46461322-410ce0a3-4262-4034-ae8e-40606f05dd87",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-list/account-lists-count-guids",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-list",
+						"account-lists-count-guids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signals",
+			"id": "46461322-ab81ccb7-06f4-42a6-8052-4ee1c3290662",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"840A8DB9959DDB3C\",\r\n        \"dateRange\": \"ALL\",\r\n        \"categoryDisplayId\": 0\r\n    }\r\n}\r\n// {\r\n//   \"data\": {\r\n//     \"compGuid\": \"EF06CFABB9D847E9\",\r\n//     \"categoryIds\": [15]\r\n//   }\r\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-signal/signals",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-signal",
+						"signals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signal-category-by-guid",
+			"id": "46461322-7004c07e-0819-479f-a883-fa984d3f05e8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"840A8DB9959DDB3C\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-signal/signal-category-by-guid",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-signal",
+						"signal-category-by-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-revealed-guid",
+			"id": "46461322-2ed95a45-60b3-4195-b744-3103dacefdf2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"compGuid\": \"840A8DB9959DDB3C\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v2/account-list/account-revealed-guid",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v2",
+						"account-list",
+						"account-revealed-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-to-list",
+			"id": "46461322-21e39b9d-e034-4472-99f4-d0b951c543da",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 9595,\r\n            \"listName\": \"espe\",\r\n            \"conGuids\": [],\r\n            \"contactRevealRequest\": [\r\n                {\r\n                    \"conGuid\": \"8ADF9AA21AB00D8B3964D79BD0F8DF2E\",\r\n                    \"compGuid\": \"840A8DB9959DDB3C\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": 9591,\r\n            \"listName\": \"shashank\",\r\n            \"conGuids\": [],\r\n            \"contactRevealRequest\": [\r\n                {\r\n                    \"conGuid\": \"8ADF9AA21AB00D8B3964D79BD0F8DF2E\",\r\n                    \"compGuid\": \"840A8DB9959DDB3C\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"exportLoading\": false,\r\n    \"revealSource\": \"Contact Profile Page\",\r\n    \"type\": \"NEW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/lead-list/add-to-list",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"lead-list",
+						"add-to-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-list-save",
+			"id": "46461322-0dd14df3-d23a-47a7-900a-d4e6f3e78e20",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"id\": 1250,\r\n            \"listName\": \"shashank\",\r\n            \"guids\": [\r\n                \"840A8DB9959DDB3C\"\r\n            ],\r\n            \"type\": \"HANDPICKED\",\r\n            \"isTrack\": \"false\",\r\n            \"isDefaultTrack\": \"false\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-list/account-list-save",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-list",
+						"account-list-save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-reveal",
+			"id": "46461322-138cc36e-1463-4ceb-ba5c-ee463d186321",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"type\": \"EXISTING\",\r\n        \"revealSource\": \"Employee List\",\r\n        \"compGuids\": [\r\n            \"840A8DB9959DDB3C\"\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}customer-list/v1/account-list/account-reveal",
+					"host": [
+						"{{baseUrl}}customer-list"
+					],
+					"path": [
+						"v1",
+						"account-list",
+						"account-reveal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
