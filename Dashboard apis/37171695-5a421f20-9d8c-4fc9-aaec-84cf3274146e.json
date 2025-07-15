@@ -102,8 +102,22 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/bulk-downloads-list",
+					"protocol": "https",
+					"host": [
+						"qc3-apigateway",
+						"smarte",
+						"pro"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"bulk-downloads-list"
+					]
+				}
 			},
 			"response": []
 		}
