@@ -628,6 +628,61 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "{{base-url}}/customer-list/v1/lead-list/lead-upload",
+			"id": "46461322-23e50200-165e-4166-b211-52010bd2d877",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"type": "file",
+							"key": "file",
+							"src": "/C:/Users/Mitali.Lohar/Downloads/Lead-Sample-File (3).csv"
+						},
+						{
+							"type": "text",
+							"key": "listName",
+							"value": "lead upload"
+						},
+						{
+							"type": "text",
+							"key": "fieldMapping",
+							"value": "[{\"name\": \"Full Name\", \"mappedBy\": \"Full Name\", \"position\": 0, \"apiFieldName\": null}, {\"name\": \"First Name\", \"mappedBy\": \"First Name\", \"position\": 1, \"apiFieldName\": null}, {\"name\": \"Last Name\", \"mappedBy\": \"Last Name\", \"position\": 2, \"apiFieldName\": null}, {\"name\": \"Account Name\", \"mappedBy\": \"Company Name\", \"position\": 3, \"apiFieldName\": null}, {\"name\": \"Website\", \"mappedBy\": \"Company Website\", \"position\": 4, \"apiFieldName\": null}, {\"name\": \"Email Address\", \"mappedBy\": \"Contact Email\", \"position\": 5, \"apiFieldName\": null}, {\"name\": \"Linkedin URL\", \"mappedBy\": \"Contact Linkedin Url\", \"position\": 6, \"apiFieldName\": null}]"
+						},
+						{
+							"type": "text",
+							"key": "sheetName",
+							"value": "Sheet1"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-upload",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-upload"
+					]
+				},
+				"description": "Generated from cURL: curl --location --globoff '{{base-url}}/customer-list/v1/lead-list/lead-upload' \\\n\r\n--header 'Authorization: {{auth-token}}' \\\n\r\n--form 'file=@\"/C:/Users/Mitali.Lohar/Downloads/Lead-Sample-File (3).csv\"' \\\n\r\n--form 'listName=\"lead upload\"' \\\n\r\n--form 'fieldMapping=\"[{\\\"name\\\": \\\"Full Name\\\", \\\"mappedBy\\\": \\\"Full Name\\\", \\\"position\\\": 0, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"First Name\\\", \\\"mappedBy\\\": \\\"First Name\\\", \\\"position\\\": 1, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Last Name\\\", \\\"mappedBy\\\": \\\"Last Name\\\", \\\"position\\\": 2, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Account Name\\\", \\\"mappedBy\\\": \\\"Company Name\\\", \\\"position\\\": 3, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Website\\\", \\\"mappedBy\\\": \\\"Company Website\\\", \\\"position\\\": 4, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Email Address\\\", \\\"mappedBy\\\": \\\"Contact Email\\\", \\\"position\\\": 5, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Linkedin URL\\\", \\\"mappedBy\\\": \\\"Contact Linkedin Url\\\", \\\"position\\\": 6, \\\"apiFieldName\\\": null}]\"' \\\n\r\n--form 'sheetName=\"Sheet1\"'\n "
+			},
+			"response": []
 		}
 	],
 	"auth": {
