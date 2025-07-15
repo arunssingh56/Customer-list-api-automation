@@ -507,7 +507,7 @@
 			"response": []
 		},
 		{
-			"name": "lead-list-create Copy",
+			"name": "lead-list-update",
 			"id": "46461322-b1efe854-099d-4475-a182-80a3ce1e2acd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
