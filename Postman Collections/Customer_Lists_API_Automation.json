@@ -378,7 +378,7 @@
 			"response": []
 		},
 		{
-			"name": "lead-list-create Copy",
+			"name": "account-upload-temp",
 			"id": "221a355b-0654-4510-a78d-60802097fc57",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -397,14 +397,45 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"listName\": \"abc\"\r\n    }\r\n}",
+					"raw": "// ------WebKitFormBoundarywdNShbNukD5s8dCq\r\n// Content-Disposition: form-data; name=\"file\"; filename=\"Account-Sample-File.csv\"\r\n// Content-Type: text/csv\r\n\r\n\r\n// ------WebKitFormBoundarywdNShbNukD5s8dCq--",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{base-url}}customer-list/v1/lead-list/lead-list-create"
+				"url": "{{base-url}}customer-list/v1/account-list/account-upload-temp"
+			},
+			"response": []
+		},
+		{
+			"name": "account-upload-temp Copy",
+			"id": "a9d16673-02e9-4d5d-96aa-0c42c48ae03f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "// ------WebKitFormBoundarywdNShbNukD5s8dCq\r\n// Content-Disposition: form-data; name=\"file\"; filename=\"Account-Sample-File.csv\"\r\n// Content-Type: text/csv\r\n\r\n\r\n// ------WebKitFormBoundarywdNShbNukD5s8dCq--",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base-url}}customer-list/v1/account-list/account-upload-temp"
 			},
 			"response": []
 		}
