@@ -75,12 +75,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:1010/customer-list/v1/lead-list/retrieve-image-url",
-					"protocol": "http",
+					"raw": "{{base-url}}/customer-list/v1/lead-list/retrieve-image-url",
 					"host": [
-						"localhost"
+						"{{base-url}}"
 					],
-					"port": "1010",
 					"path": [
 						"customer-list",
 						"v1",
