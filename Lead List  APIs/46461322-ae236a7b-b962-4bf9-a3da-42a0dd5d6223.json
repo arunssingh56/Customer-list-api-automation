@@ -466,6 +466,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "lead-delete Copy",
+			"id": "46461322-7bbb5b2c-2a6e-4157-9333-bda27233433b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 5264,\r\n        \"leadIds\": [\r\n            224,\r\n            2211,\r\n            2222\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-delete",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-delete"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
