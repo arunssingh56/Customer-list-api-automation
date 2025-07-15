@@ -122,13 +122,19 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pagination\": {\r\n        \"pageSize\": 3\r\n    },\r\n    \"type\": \"DASHBOARD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/bulk-downloads-list",
-					"protocol": "https",
+					"raw": "{{base-url}}/customer-list/v1/bulk-downloads-list",
 					"host": [
-						"qc3-apigateway",
-						"smarte",
-						"pro"
+						"{{base-url}}"
 					],
 					"path": [
 						"customer-list",
