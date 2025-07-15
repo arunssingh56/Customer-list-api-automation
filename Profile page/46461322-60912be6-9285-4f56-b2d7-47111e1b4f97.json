@@ -16,7 +16,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{auth_token}}",
+						"value": "{{auth-token}}",
 						"type": "text"
 					}
 				],
@@ -30,9 +30,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{baseUrl}}customer-list/v1/lead-list/lead-list-by-reveal-id",
+					"raw": "{{base-url}}customer-list/v1/lead-list/lead-list-by-reveal-id",
 					"host": [
-						"{{baseUrl}}customer-list"
+						"{{base-url}}customer-list"
 					],
 					"path": [
 						"v1",
