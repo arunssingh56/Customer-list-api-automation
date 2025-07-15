@@ -630,7 +630,7 @@
 			"response": []
 		},
 		{
-			"name": "{{base-url}}/customer-list/v1/lead-list/lead-upload",
+			"name": "lead-upload",
 			"id": "46461322-23e50200-165e-4166-b211-52010bd2d877",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
