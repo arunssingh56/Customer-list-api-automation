@@ -526,7 +526,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"listName\": \"abc\"\r\n    }\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -534,14 +534,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}customer-list/v1/lead-list/lead-list-create",
+					"raw": "{{base-url}}customer-list/v1/lead-list/lead-list-update",
 					"host": [
 						"{{base-url}}customer-list"
 					],
 					"path": [
 						"v1",
 						"lead-list",
-						"lead-list-create"
+						"lead-list-update"
 					]
 				}
 			},
