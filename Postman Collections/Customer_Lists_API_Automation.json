@@ -378,7 +378,7 @@
 			"response": []
 		},
 		{
-			"name": "lead-list-create Copy",
+			"name": "lead-list-update",
 			"id": "b1efe854-099d-4475-a182-80a3ce1e2acd",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -397,14 +397,14 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"listName\": \"abc\"\r\n    }\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "{{base-url}}customer-list/v1/lead-list/lead-list-create"
+				"url": "{{base-url}}customer-list/v1/lead-list/lead-list-update"
 			},
 			"response": []
 		},
