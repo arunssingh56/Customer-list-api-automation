@@ -590,47 +590,6 @@
 		},
 		{
 			"name": "lead-upload",
-			"id": "46461322-fc8eff27-03b8-4138-a6c7-deaee9473705",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{auth_token}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "// ------WebKitFormBoundary2gKbFKkLpyBobIlF\r\n// Content-Disposition: form-data; name=\"file\"; filename=\"Lead-Sample-File.csv\"\r\n// Content-Type: text/csv\r\n\r\n\r\n// ------WebKitFormBoundary2gKbFKkLpyBobIlF\r\n// Content-Disposition: form-data; name=\"fieldMapping\"\r\n\r\n// [{\"name\":\"Full Name\",\"position\":0,\"mappedBy\":\"Full Name\"},{\"name\":\"First Name\",\"position\":1,\"mappedBy\":\"First Name\"},{\"name\":\"Last Name\",\"position\":2,\"mappedBy\":\"Last Name\"},{\"name\":\"Account Name\",\"position\":3,\"mappedBy\":\"Company Name\"},{\"name\":\"Website\",\"position\":4,\"mappedBy\":\"Company Website\"},{\"name\":\"Email Address\",\"position\":5,\"mappedBy\":\"Contact Email\"},{\"name\":\"Linkedin URL\",\"position\":6,\"mappedBy\":\"Contact Linkedin Url\"}]\r\n// ------WebKitFormBoundary2gKbFKkLpyBobIlF\r\n// Content-Disposition: form-data; name=\"listName\"\r\n\r\n// ADD\r\n// ------WebKitFormBoundary2gKbFKkLpyBobIlF\r\n// Content-Disposition: form-data; name=\"sheetName\"\r\n\r\n// Sheet1\r\n// ------WebKitFormBoundary2gKbFKkLpyBobIlF--",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base-url}}customer-list/v1/lead-list/lead-upload",
-					"host": [
-						"{{base-url}}customer-list"
-					],
-					"path": [
-						"v1",
-						"lead-list",
-						"lead-upload"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "lead-upload",
 			"id": "46461322-23e50200-165e-4166-b211-52010bd2d877",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
