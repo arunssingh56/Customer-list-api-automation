@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "37171695-65392e56-487b-4ab0-bc6b-50e6c7c8b936",
+		"name": "Search Page",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "archived-account-lists",
+			"id": "37171695-6d4861ae-4e0e-4605-8d3b-c70dd68ca6cc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/account-list/archived-account-lists",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"archived-account-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "archived-lead-lists",
+			"id": "37171695-17087325-4bbe-4ed2-b04d-9d0259f397e6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/lead-list/archived-lead-lists",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"archived-lead-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact-revealed-guid",
+			"id": "37171695-1bbf486e-cd16-4371-b564-43aa36bc14f3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}customer-list/v2/reveal/contact-revealed-guid",
+					"host": [
+						"{{base-url}}customer-list"
+					],
+					"path": [
+						"v2",
+						"reveal",
+						"contact-revealed-guid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signal-category",
+			"id": "37171695-1ca415c2-742a-4afc-82cc-c07f4a6b9264",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/account-signal/signal-category",
+					"protocol": "https",
+					"host": [
+						"qc3-apigateway",
+						"smarte",
+						"pro"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lead-lists",
+			"id": "37171695-147c9574-88fe-49f4-af5f-3a9287c53797",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "auth-token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/lead-list/lead-lists",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "discard-popup-email-suppression-list",
+			"id": "37171695-38bc6988-678c-460d-9bfc-5c60b29184bb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/emails-lists/discard-popup-email-suppression-list",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"emails-lists",
+						"discard-popup-email-suppression-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "previously-email-suppression-list",
+			"id": "37171695-14887742-164d-4548-b553-43c52b70b4a1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":\"1\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/emails-lists/previously-email-suppression-list",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"emails-lists",
+						"previously-email-suppression-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-lists",
+			"id": "37171695-339b5c29-d444-4c20-8260-231f575d6758",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/account-list/account-lists",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact-reveal",
+			"id": "37171695-707da5aa-7a50-4e8e-97b4-789cfe70c635",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"conGuid\": \"B3F8030BDBD98CC83599520DACE9FB58\",\r\n            \"compGuid\": \"CFF4C10E018F8B01\"\r\n        }\r\n    ],\r\n    \"revealSource\": \"Employee List\",\r\n    \"type\": \"NEW\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v2/reveal/",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"reveal",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "account-reveal",
+			"id": "37171695-666132a3-0e73-4c88-a1c2-a5d1b1bb36e5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"type\": \"NEW\",\r\n        \"revealSource\": \"Employee List\",\r\n        \"compGuids\": [\r\n            \"1271AF0FF312470C\"\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v2/account-list/account-reveal",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"account-list",
+						"account-reveal"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
