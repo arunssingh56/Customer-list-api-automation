@@ -525,7 +525,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"id\": 23\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 1051\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
