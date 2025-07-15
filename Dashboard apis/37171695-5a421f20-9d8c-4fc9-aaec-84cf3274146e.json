@@ -50,6 +50,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/reveal/contact-reveal-list",
 					"protocol": "https",
