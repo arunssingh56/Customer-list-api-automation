@@ -96,7 +96,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"userName\": \"temij32999@marchub.com\",\r\n        \"password\": \"Lohar@123456\"\r\n    },\r\n    \"type\": \"SMARTE\"\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"userName\": \"temij32999@marchub.com\",\r\n        \"password\": \"Lohar@123456\"\r\n    },\r\n    \"type\": \"SMARTE\"\r\n}\r\n//a",
 					"options": {
 						"raw": {
 							"language": "json"
