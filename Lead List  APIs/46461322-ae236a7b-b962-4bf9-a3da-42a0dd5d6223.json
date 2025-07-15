@@ -507,7 +507,7 @@
 			"response": []
 		},
 		{
-			"name": "lead-list-create Copy",
+			"name": "account-upload-temp",
 			"id": "46461322-221a355b-0654-4510-a78d-60802097fc57",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -526,7 +526,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"listName\": \"abc\"\r\n    }\r\n}",
+					"raw": "// ------WebKitFormBoundarywdNShbNukD5s8dCq\r\n// Content-Disposition: form-data; name=\"file\"; filename=\"Account-Sample-File.csv\"\r\n// Content-Type: text/csv\r\n\r\n\r\n// ------WebKitFormBoundarywdNShbNukD5s8dCq--",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -534,14 +534,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}customer-list/v1/lead-list/lead-list-create",
+					"raw": "{{base-url}}customer-list/v1/account-list/account-upload-temp",
 					"host": [
 						"{{base-url}}customer-list"
 					],
 					"path": [
 						"v1",
-						"lead-list",
-						"lead-list-create"
+						"account-list",
+						"account-upload-temp"
 					]
 				}
 			},
