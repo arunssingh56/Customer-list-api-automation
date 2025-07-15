@@ -86,6 +86,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"type\":\"dashboard\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/account-list/account-list-dashboard",
 					"protocol": "https",
