@@ -180,7 +180,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\"for single\r\n{\r\n    \"\"data\"\": [\r\n        {\r\n            \"\"id\"\":\"\"5274\"\"\r\n        }\r\n    ]\r\n}\r\n\r\nfor multiple\r\n{\r\n    \"\"data\"\": [\r\n        {\r\n            \"\"leadIds\"\":[\r\n             5172,\r\n             2322\r\n            ]\r\n        }\r\n    ]\r\n}\"",
+					"raw": "{\r\n    \"data\": {\r\n        \"leadListIds\": [\r\n            9602\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
