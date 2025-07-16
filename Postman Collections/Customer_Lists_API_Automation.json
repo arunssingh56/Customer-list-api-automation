@@ -450,7 +450,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{auth-token}}"
+						"value": "{{auth_token}}"
 					}
 				],
 				"body": {
@@ -478,7 +478,7 @@
 						}
 					]
 				},
-				"url": "{{base-url}}/customer-list/v1/lead-list/lead-upload",
+				"url": "{{base-url}}customer-list/v1/lead-list/lead-upload",
 				"description": "Generated from cURL: curl --location --globoff '{{base-url}}/customer-list/v1/lead-list/lead-upload' \\\n\r\n--header 'Authorization: {{auth-token}}' \\\n\r\n--form 'file=@\"/C:/Users/Mitali.Lohar/Downloads/Lead-Sample-File (3).csv\"' \\\n\r\n--form 'listName=\"lead upload\"' \\\n\r\n--form 'fieldMapping=\"[{\\\"name\\\": \\\"Full Name\\\", \\\"mappedBy\\\": \\\"Full Name\\\", \\\"position\\\": 0, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"First Name\\\", \\\"mappedBy\\\": \\\"First Name\\\", \\\"position\\\": 1, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Last Name\\\", \\\"mappedBy\\\": \\\"Last Name\\\", \\\"position\\\": 2, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Account Name\\\", \\\"mappedBy\\\": \\\"Company Name\\\", \\\"position\\\": 3, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Website\\\", \\\"mappedBy\\\": \\\"Company Website\\\", \\\"position\\\": 4, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Email Address\\\", \\\"mappedBy\\\": \\\"Contact Email\\\", \\\"position\\\": 5, \\\"apiFieldName\\\": null}, {\\\"name\\\": \\\"Linkedin URL\\\", \\\"mappedBy\\\": \\\"Contact Linkedin Url\\\", \\\"position\\\": 6, \\\"apiFieldName\\\": null}]\"' \\\n\r\n--form 'sheetName=\"Sheet1\"'\n "
 			},
 			"response": []
