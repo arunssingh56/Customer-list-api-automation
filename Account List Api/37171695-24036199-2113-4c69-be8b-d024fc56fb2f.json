@@ -246,9 +246,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}/customer-list/v1/account-list/account-lists-count-guids",
+					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/account-list/account-lists-count-guids",
+					"protocol": "https",
 					"host": [
-						"{{base-url}}"
+						"qc3-apigateway",
+						"smarte",
+						"pro"
 					],
 					"path": [
 						"customer-list",
