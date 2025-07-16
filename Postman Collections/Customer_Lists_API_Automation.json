@@ -463,13 +463,13 @@
 						},
 						{
 							"type": "text",
-							"key": "listName",
-							"value": "lead upload"
+							"key": "fieldMapping",
+							"value": "[{\"name\":\"Full Name\",\"position\":0,\"mappedBy\":\"Full Name\"},{\"name\":\"First Name\",\"position\":1,\"mappedBy\":\"First Name\"},{\"name\":\"Last Name\",\"position\":2,\"mappedBy\":\"Last Name\"},{\"name\":\"Account Name\",\"position\":3,\"mappedBy\":\"Company Name\"},{\"name\":\"Website\",\"position\":4,\"mappedBy\":\"Company Website\"},{\"name\":\"Email Address\",\"position\":5,\"mappedBy\":\"Contact Email\"},{\"name\":\"Linkedin URL\",\"position\":6,\"mappedBy\":\"Contact Linkedin Url\"}]"
 						},
 						{
 							"type": "text",
-							"key": "fieldMapping",
-							"value": "[{\"name\": \"Full Name\", \"mappedBy\": \"Full Name\", \"position\": 0, \"apiFieldName\": null}, {\"name\": \"First Name\", \"mappedBy\": \"First Name\", \"position\": 1, \"apiFieldName\": null}, {\"name\": \"Last Name\", \"mappedBy\": \"Last Name\", \"position\": 2, \"apiFieldName\": null}, {\"name\": \"Account Name\", \"mappedBy\": \"Company Name\", \"position\": 3, \"apiFieldName\": null}, {\"name\": \"Website\", \"mappedBy\": \"Company Website\", \"position\": 4, \"apiFieldName\": null}, {\"name\": \"Email Address\", \"mappedBy\": \"Contact Email\", \"position\": 5, \"apiFieldName\": null}, {\"name\": \"Linkedin URL\", \"mappedBy\": \"Contact Linkedin Url\", \"position\": 6, \"apiFieldName\": null}]"
+							"key": "listName",
+							"value": "lead upload"
 						},
 						{
 							"type": "text",
