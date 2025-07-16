@@ -526,13 +526,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{auth-token}}",
+						"value": "{{auth_token}}",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"searchText\": \"Alpha\",\r\n        \"contentType\": \"SHARED\"\r\n    },\r\n    \"type\": \"DASHBOARD\",\r\n    \"pagination\": {\r\n        \"pageSize\": 10,\r\n        \"pageIndex\": 1\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"searchText\": \"Alpha\",\r\n        \"contentType\": \"ALL\"\r\n    },\r\n    \"type\": \"DASHBOARD\",\r\n    \"pagination\": {\r\n        \"pageSize\": 10,\r\n        \"pageIndex\": 1\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
