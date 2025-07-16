@@ -3744,7 +3744,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{    \"type\": \"dashboard\"}",
+					"raw": "{\"type\": \"dashboard\"}",
 					"options": {
 						"raw": {
 							"language": "json"
