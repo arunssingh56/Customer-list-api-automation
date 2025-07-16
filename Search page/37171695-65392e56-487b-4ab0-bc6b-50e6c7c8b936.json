@@ -81,11 +81,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{base-url}}customer-list/v2/reveal/contact-revealed-guid",
+					"raw": "{{base-url}}/customer-list/v2/reveal/contact-revealed-guid",
 					"host": [
-						"{{base-url}}customer-list"
+						"{{base-url}}"
 					],
 					"path": [
+						"customer-list",
 						"v2",
 						"reveal",
 						"contact-revealed-guid"
