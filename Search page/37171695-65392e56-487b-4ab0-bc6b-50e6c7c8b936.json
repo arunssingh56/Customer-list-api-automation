@@ -313,7 +313,13 @@
 			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"data\": {\r\n        \"type\": \"NEW\",\r\n        \"revealSource\": \"Employee List\",\r\n        \"compGuids\": [\r\n            \"1271AF0FF312470C\"\r\n        ]\r\n    }\r\n}",
