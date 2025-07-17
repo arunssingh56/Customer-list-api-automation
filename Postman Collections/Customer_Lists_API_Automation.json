@@ -446,6 +446,9 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
@@ -490,6 +493,9 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
