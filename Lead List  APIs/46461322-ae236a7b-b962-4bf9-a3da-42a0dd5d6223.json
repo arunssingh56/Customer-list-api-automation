@@ -668,7 +668,7 @@
 						{
 							"type": "file",
 							"key": "file",
-							"src": "/C:/Users/Mitali.Lohar/Downloads/Account-Sample-File (1).csv"
+							"src": "postman-cloud:///1f005652-fba7-4530-879c-bf161d51e4b2"
 						}
 					]
 				},
