@@ -249,7 +249,7 @@
 						}
 					}
 				},
-				"url": "{{base-url}}/customer-list/v1/lead-list/lead-list-by-reveal-id"
+				"url": "{{base-url}}customer-list/v1/lead-list/lead-list-by-reveal-id"
 			},
 			"response": []
 		},
