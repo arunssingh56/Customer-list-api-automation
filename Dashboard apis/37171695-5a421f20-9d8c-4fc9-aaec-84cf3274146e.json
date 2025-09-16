@@ -159,6 +159,45 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "contact-reveal-list",
+			"id": "37171695-4e675a99-263e-495d-b86d-a53f33d8c4f2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/customer-list/v1/reveal/contact-reveal-list",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"reveal",
+						"contact-reveal-list"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
