@@ -105,12 +105,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/account-list/account-list-dashboard",
-					"protocol": "https",
+					"raw": "{{base-url}}/customer-list/v1/account-list/account-list-dashboard",
 					"host": [
-						"qc3-apigateway",
-						"smarte",
-						"pro"
+						"{{base-url}}"
 					],
 					"path": [
 						"customer-list",
