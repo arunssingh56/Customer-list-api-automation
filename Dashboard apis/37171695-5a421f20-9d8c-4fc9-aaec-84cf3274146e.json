@@ -39,48 +39,6 @@
 			"response": []
 		},
 		{
-			"name": "contact-reveal-list",
-			"id": "37171695-5f2ab305-bf6c-4b58-859c-1064edf33828",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "{{auth_token}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/reveal/contact-reveal-list",
-					"protocol": "https",
-					"host": [
-						"qc3-apigateway",
-						"smarte",
-						"pro"
-					],
-					"path": [
-						"customer-list",
-						"v1",
-						"reveal",
-						"contact-reveal-list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "account-list-dashboard",
 			"id": "37171695-82a6e493-1c34-440b-81eb-43f922d06e36",
 			"protocolProfileBehavior": {
@@ -188,6 +146,48 @@
 					"raw": "{{base-url}}/customer-list/v1/reveal/contact-reveal-list",
 					"host": [
 						"{{base-url}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"reveal",
+						"contact-reveal-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "contact-reveal-list",
+			"id": "37171695-5f2ab305-bf6c-4b58-859c-1064edf33828",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"REVEALED\",\r\n    \"pagination\": {\r\n        \"pageSize\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v1/reveal/contact-reveal-list",
+					"protocol": "https",
+					"host": [
+						"qc3-apigateway",
+						"smarte",
+						"pro"
 					],
 					"path": [
 						"customer-list",
