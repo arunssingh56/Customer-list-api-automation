@@ -24,12 +24,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://qc3-apigateway.smarte.pro/customer-list/v2/reveal/contact-revealed",
-					"protocol": "https",
+					"raw": "{{base-url}}/customer-list/v2/reveal/contact-revealed",
 					"host": [
-						"qc3-apigateway",
-						"smarte",
-						"pro"
+						"{{base-url}}"
 					],
 					"path": [
 						"customer-list",
