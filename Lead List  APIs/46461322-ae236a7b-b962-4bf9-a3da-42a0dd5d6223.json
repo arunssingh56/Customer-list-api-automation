@@ -122,6 +122,35 @@
 		},
 		{
 			"name": "retrieve-image-url",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e7860860-2afc-4e38-b3d7-ba012a4c3e97",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has Content-Type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is in JSON format\", function () {\r",
+							"    const responseBody = pm.response.text();\r",
+							"    pm.expect(() => JSON.parse(responseBody)).to.not.throw();\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "46461322-6cf2dd9c-c74c-45dd-8fef-7c33bddbb1c3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
