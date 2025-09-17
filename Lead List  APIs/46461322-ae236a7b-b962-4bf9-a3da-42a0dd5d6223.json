@@ -428,7 +428,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"leadListIds\": [\r\n            9602\r\n        ]\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"leadListIds\": [\r\n            6636\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
