@@ -386,7 +386,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"id\": 6634,\r\n        \"listName\": \"123\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 6634,\r\n        \"listName\": \"Copy of 123\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
