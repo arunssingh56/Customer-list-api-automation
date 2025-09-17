@@ -15,14 +15,14 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "a0e9658d-80e1-4586-bdcc-9b87ea019b56",
 								"exec": [
 									"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
 									"pm.test('Contains signals', () => pm.expect(pm.response.json().data.signals).to.be.an('object'));",
 									"pm.test('Contains trackList as true', () => pm.expect(pm.response.json().data.trackList).to.eql(true));"
 								],
 								"type": "text/javascript",
-								"packages": {},
-								"id": "a0e9658d-80e1-4586-bdcc-9b87ea019b56"
+								"packages": {}
 							}
 						}
 					],
@@ -40,7 +40,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"data\": {\n    \"compGuid\": \"EF06CFABB9D847E9\",\n    \"categoryIds\": [15]\n  }\n}"
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"53A15A01E32C8428\",\n    \"categoryIds\": [15]\n  }\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
