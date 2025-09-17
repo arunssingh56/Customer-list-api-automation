@@ -262,6 +262,35 @@
 		},
 		{
 			"name": "lead-list-share -share-list-save",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73a2686e-2371-41ca-abad-9eeb21ebc387",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has correct Content-Type header\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"// Additional test to check if response body is not empty\r",
+							"pm.test(\"Response body is not empty\", function () {\r",
+							"    pm.expect(pm.response.text()).to.not.be.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "46461322-04223456-eee4-41cb-8434-73dfb9f6174c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -280,7 +309,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"listId\": 5537,\r\n        \"isPublic\": false,\r\n        \"userData\": [\r\n            {\r\n                \"userId\": 98,\r\n                \"access\": [\r\n                    \"READ\",\r\n                    \"WRITE\"\r\n                ]\r\n            }\r\n            // ,\r\n            // {\r\n            //     \"userId\": 107,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 72,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 107,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 71,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 109,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // }\r\n        ]\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"listId\": 1255,\r\n        \"isPublic\": false,\r\n        \"userData\": [\r\n            {\r\n                \"userId\": 98,\r\n                \"access\": [\r\n                    \"READ\",\r\n                    \"WRITE\"\r\n                ]\r\n            }\r\n            // ,\r\n            // {\r\n            //     \"userId\": 107,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 72,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 107,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 71,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // },\r\n            // {\r\n            //     \"userId\": 109,\r\n            //     \"access\": [\r\n            //         \"READ\",\r\n            //         \"WRITE\"\r\n            //     ]\r\n            // }\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
