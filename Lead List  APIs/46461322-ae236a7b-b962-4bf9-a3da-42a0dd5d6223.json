@@ -729,6 +729,56 @@
 		},
 		{
 			"name": "lead-delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2689e424-fa3d-4422-bca4-6e8dcaa9930d",
+						"exec": [
+							"// Checking the status code of the response\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"// Checking the response time\r",
+							"pm.test(\"Response time is less than 500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							"\r",
+							"// Asserting the response body structure\r",
+							"const response = pm.response.json();\r",
+							"pm.test(\"Response body has a status object\", function () {\r",
+							"    pm.expect(response).to.have.property('status');\r",
+							"});\r",
+							"\r",
+							"// Validating the properties of the status object\r",
+							"pm.test(\"Status object has the correct properties\", function () {\r",
+							"    pm.expect(response.status).to.have.all.keys('statusCode', 'requestId', 'message');\r",
+							"});\r",
+							"\r",
+							"// Checking the status code in the response body\r",
+							"pm.test(\"Status code in the response body is 206\", function () {\r",
+							"    pm.expect(response.status.statusCode).to.equal(206);\r",
+							"});\r",
+							"\r",
+							"// Validating the requestId format\r",
+							"pm.test(\"Request ID is a valid UUID format\", function () {\r",
+							"    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;\r",
+							"    pm.expect(response.status.requestId).to.match(uuidRegex);\r",
+							"});\r",
+							"\r",
+							"// Checking if the message property exists and is a string\r",
+							"pm.test(\"Message property exists and is a string\", function () {\r",
+							"    pm.expect(response.status.message).to.exist;\r",
+							"    pm.expect(response.status.message).to.be.a('string');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "46461322-5c5511ae-7e9f-435a-a61b-85a19fdaf1ee",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
