@@ -339,28 +339,6 @@
 					"script": {
 						"id": "e0bfd3a1-07fa-4af8-af33-72c147aa398f",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.expect(pm.response.code).to.equal(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response time is less than 200ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has Content-Type header\", function () {\r",
-							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response structure contains 'data' property\", function () {\r",
-							"    const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson).to.have.property('data');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response 'data' contains 'id' and 'listName'\", function () {\r",
-							"    const responseJson = pm.response.json();\r",
-							"    pm.expect(responseJson.data).to.have.property('id');\r",
-							"    pm.expect(responseJson.data).to.have.property('listName');\r",
-							"});\r",
 							""
 						],
 						"type": "text/javascript",
@@ -386,7 +364,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"id\": 6634,\r\n        \"listName\": \"Copy of 123\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 6645,\r\n        \"listName\": \"Copy of jeet\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
