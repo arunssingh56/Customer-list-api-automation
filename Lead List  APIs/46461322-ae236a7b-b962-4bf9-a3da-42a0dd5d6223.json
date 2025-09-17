@@ -238,7 +238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"id\": 4\r\n    },\r\n    \"pagination\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 6642\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
