@@ -361,7 +361,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{auth_token}}",
+						"value": "{{auth-token}}",
 						"type": "text"
 					}
 				],
