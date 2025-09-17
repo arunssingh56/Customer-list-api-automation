@@ -1,0 +1,2479 @@
+{
+	"info": {
+		"_postman_id": "46461322-6cd0ad56-da46-4327-9a56-0b41df371a76",
+		"name": "Signals API",
+		"description": "This collection combines tests from multiple collections.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signals API",
+			"item": [
+				{
+					"name": "TC1 - Happy Path",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+									"pm.test('Contains signals', () => pm.expect(pm.response.json().data.signals).to.be.an('object'));",
+									"pm.test('Contains trackList as true', () => pm.expect(pm.response.json().data.trackList).to.eql(true));"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "a0e9658d-80e1-4586-bdcc-9b87ea019b56"
+							}
+						}
+					],
+					"id": "46461322-8bdcc160-03bb-4e83-a390-539406c8c6d6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"EF06CFABB9D847E9\",\n    \"categoryIds\": [15]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2 - Invalid compGuid Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "fcc58db0-41a4-4827-8f40-b4ec5a2e9d76"
+							}
+						}
+					],
+					"id": "46461322-859f0a2f-f916-4408-a11e-a865b47da6ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"123\",\n    \"categoryIds\": [15]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3 - Missing categoryIds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "e542d1e8-06e5-4851-83e7-f8b54c43cbc6"
+							}
+						}
+					],
+					"id": "46461322-33849a7a-9088-4d95-abce-9a0ed69e867c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"EF06CFABB9D847E9\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC4 - Empty categoryIds array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "8953964b-74d7-462c-8ac9-cab0a6c32df2"
+							}
+						}
+					],
+					"id": "46461322-4385720a-0fb7-4327-aa96-266fff713fd9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"EF06CFABB9D847E9\",\n    \"categoryIds\": []\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC5 - Large categoryIds array",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "b5bef58f-2907-4410-9aa9-e7592f3a599b"
+							}
+						}
+					],
+					"id": "46461322-ab40d161-9992-4ab5-91e1-6e90cd9c918c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": {\n    \"compGuid\": \"EF06CFABB9D847E9\",\n    \"categoryIds\": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC6 - Empty Request Body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "ccdf8878-480d-47a6-bd1c-3b972b41b419"
+							}
+						}
+					],
+					"id": "46461322-a5471c5e-4295-48bc-97b0-ccc981b2d4f6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"account-signal",
+								"signals"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46461322-f06188a3-daa6-4025-8d50-2b452a49376e"
+		},
+		{
+			"name": "Subscribe API",
+			"item": [
+				{
+					"name": "TC1 - Happy Path (New Domain)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "fc0000de-b944-4a3b-8226-bbf320a18484"
+							}
+						}
+					],
+					"id": "46461322-7d4886c7-3d48-4cf8-aad0-fa7ce2953eda",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comp_url\": \"uniquedomain123.com\",\n  \"comp_guid\": \"195E756C4C6F25C1\"\n}"
+						},
+						"url": {
+							"raw": "https://signals.smarte.pro/signals/domains/subscribe",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"signals",
+								"domains",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2 - Already Subscribed Domain",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "2dff3a49-d46a-4725-95ec-95bbd48f7c62"
+							}
+						}
+					],
+					"id": "46461322-12530ee5-e682-4613-b7eb-d38ddc779060",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comp_url\": \"google.com\",\n  \"comp_guid\": \"195E756C4C6F25C1\"\n}"
+						},
+						"url": {
+							"raw": "https://signals.smarte.pro/signals/domains/subscribe",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"signals",
+								"domains",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3 - Invalid Domain (No TLD)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "c131f8e8-4912-4878-aa67-5802ee761699"
+							}
+						}
+					],
+					"id": "46461322-2ad12942-54b5-4ac6-8660-a57ec2fa42b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comp_url\": \"invalid_domain\",\n  \"comp_guid\": \"195E756C4C6F25C1\"\n}"
+						},
+						"url": {
+							"raw": "https://signals.smarte.pro/signals/domains/subscribe",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"signals",
+								"domains",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC4 - Missing comp_guid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "e5a0273f-1047-4e28-ae82-42720e5132ed"
+							}
+						}
+					],
+					"id": "46461322-56bb7740-703c-4f05-b142-e51fd22323d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"comp_url\": \"example.com\"\n}"
+						},
+						"url": {
+							"raw": "https://signals.smarte.pro/signals/domains/subscribe",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"signals",
+								"domains",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC5 - Empty Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Add your test scripts here",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test('Response time is less than 500ms', function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"pm.test('Content-Type is application/json', function () {",
+									"    pm.response.to.have.header('Content-Type', 'application/json');",
+									"});",
+									"pm.test('Response has valid JSON structure', function () {",
+									"    pm.expect(pm.response.json()).to.be.an('object');",
+									"});"
+								],
+								"id": "2bd3b10a-c881-43e9-a37b-fce0661d122c"
+							}
+						}
+					],
+					"id": "46461322-0cdbc806-9dea-4ca0-ac53-3c90c48b25e1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "https://signals.smarte.pro/signals/domains/subscribe",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"signals",
+								"domains",
+								"subscribe"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46461322-e1ec779d-dbc4-4c30-a738-e27f570ff461"
+		},
+		{
+			"name": "CategoryByGuid Tests",
+			"item": [
+				{
+					"name": "TC1 - Valid GUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('200 OK', ()=>pm.response.to.have.status(200));",
+									"let j = pm.response.json();",
+									"pm.expect(j.status.statusCode).to.eql(200);",
+									"pm.expect(j.data).to.be.an('array').that.includes('Growth','M&A');"
+								],
+								"type": "text/javascript",
+								"id": "7fbd2f0c-b218-44e4-9890-52f25a451446"
+							}
+						}
+					],
+					"id": "46461322-59e741da-7cf4-4173-9336-2d4336040377",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"guid\": \"195E756C4C6F25C1\" }"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2 - Missing GUID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('400 Bad Request or 422 Unprocessable', ()=>pm.expect([400,422]).to.include(pm.response.code));"
+								],
+								"type": "text/javascript",
+								"id": "b6f7eb87-7cb1-43fe-8fa0-e7a1ca173d22"
+							}
+						}
+					],
+					"id": "46461322-ec00e5a3-022f-46d4-8425-469f38373c82",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3 - Invalid GUID Format",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('400 violation', ()=>pm.expect(pm.response.code).to.eql(400));",
+									"pm.test('error message mentions GUID', ()=>pm.expect(pm.response.text().toLowerCase()).to.include('guid'));"
+								],
+								"type": "text/javascript",
+								"id": "2ea2f5f9-6f96-42eb-8cd8-8cbd309c850a"
+							}
+						}
+					],
+					"id": "46461322-710be258-5a6b-4d78-bf79-7a082c4956e9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"guid\": \"XYZ\" }"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46461322-71728101-26ec-4ab1-8321-4ef948460cf1"
+		},
+		{
+			"name": "AdvancedSearch Tests",
+			"item": [
+				{
+					"name": "TC1 - Valid search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('200 & Success message', ()=>{ pm.response.to.have.status(200); let j=pm.response.json(); pm.expect(j.status.statusCode).to.eql(200); pm.expect(j.status.message).to.eql('Success'); });",
+									"pm.test('Non-empty results', ()=>{ let d=pm.response.json().data; pm.expect(d.length).to.be.above(0); d.forEach(o=>{ pm.expect(o).to.have.property('pc_con_guid'); pm.expect(o).to.have.property('rc_con_email_addr_drv'); }); });"
+								],
+								"type": "text/javascript",
+								"id": "5fee7082-3475-4cce-bcae-f54c9264d96e"
+							}
+						}
+					],
+					"id": "46461322-4205c2e4-17ed-480f-a228-1586948450a8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"data\": { \"search_text\": {\"type\":\"COMPANY\",\"value\":\"ma\"}, \"company_filters\": {\"company_lists\":{\"type\":\"INCLUDE\",\"guids\":[]}, \"company_signals\":{\"type\":\"INCLUDE\",\"guids\":[\"EBEFDA66289B434E\"]}, \"company_attributes\":{\"employee_size\":{\"size_type\":\"FIXED_RANGE\",\"fixed_range\":[],\"custom_range\":[]},\"revenue\":{\"revenue_type\":\"FIXED_RANGE\",\"fixed_range\":[],\"custom_range\":[]},\"relation\":\"OR\"},\"entity_type\":{\"type\":\"\",\"values\":[]},\"industry\":{\"type\":\"INCLUDE\",\"values\":[],\"names\":[]},\"region\":{\"type\":\"\",\"regions\":[],\"countries\":[],\"zipcodes\":[],\"states\":[]},\"techno_graphics\":{\"type\":\"\",\"values\":{\"PRODUCT\":[],\"VENDOR\":[],\"CATEGORY\":[]},\"displayNames\":{\"PRODUCT\":[],\"VENDOR\":[],\"CATEGORY\":[]}},\"keywords\":{\"type\":\"\",\"includes\":[],\"excludes\":[]},\"type\":\"company\",\"personas\":[]}, \"contact_filters\":{\"level\":{\"type\":\"level\",\"values\":[]},\"keywords\":{\"type\":\"CURRENT_JOB_TITLE\",\"includes\":[],\"excludes\":[]},\"job_change\":{\"type\":\"jobchangecriteria\"},\"functions\":{\"type\":\"functions\",\"values\":[]},\"workLocationRegion\":{\"type\":\"\",\"regions\":[],\"countries\":[],\"zipcodes\":[],\"states\":[]},\"accuracy\":{\"type\":\"\",\"accuracyValues\":[\"A_PLUS\",\"A\"]},\"type\":\"contact\"}, \"personaMetadata\":{}, \"company_personas\":[], \"contact_personas\":[], \"pagination\":{\"page_size\":\"10\",\"page_no\":\"1\" }}, \"type\":\"ADVANCED_SEARCH_COMPANY\" }"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2 - Empty search text",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('400 or no results', ()=>{ pm.expect([200,400]).to.include(pm.response.code); if(pm.response.code===200){ pm.expect(pm.response.json().data.length).to.eql(0); } });"
+								],
+								"type": "text/javascript",
+								"id": "7487efc2-d107-4354-b7eb-098a9f94398d"
+							}
+						}
+					],
+					"id": "46461322-7d34580a-01a3-442e-a028-ac955216c0e5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"data\": { \"search_text\": {\"type\":\"COMPANY\",\"value\":\"\"}, \"pagination\":{\"page_size\":\"5\",\"page_no\":\"1\"} }, \"type\":\"ADVANCED_SEARCH_COMPANY\" }"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3 - Invalid payload structure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('400 Bad Request', ()=>pm.response.to.have.status(400));"
+								],
+								"type": "text/javascript",
+								"id": "e95a0326-440f-43df-a34b-edb28bb2cf10"
+							}
+						}
+					],
+					"id": "46461322-01138d71-1482-4f9a-9664-d044a7af969b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"foo\": \"bar\" }"
+						},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46461322-5cce862f-b13f-41d0-b4e3-94616ac8fe20"
+		},
+		{
+			"name": "Publish (UDI API)",
+			"item": [
+				{
+					"name": "TC1 - Happy Path (Valid Domain: google.com)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+									"pm.test('Response time < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));",
+									"pm.test('Body contains expected fields', () => {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json).to.be.an('object');",
+									"    pm.expect(json).to.have.any.keys('news', 'events');",
+									"});"
+								],
+								"type": "text/javascript",
+								"id": "a4ed1ee0-e7cb-4ced-ba96-b5d1130950a8"
+							}
+						}
+					],
+					"id": "46461322-a76710c3-ab08-4fae-9c13-7a377f8db432",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://signals.smarte.pro/api/v1/companies/google.com/publish/news_events",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"api",
+								"v1",
+								"companies",
+								"google.com",
+								"publish",
+								"news_events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2 - Invalid Domain (Missing TLD)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status 400 or 404', () => pm.expect([400, 404]).to.include(pm.response.code));"
+								],
+								"type": "text/javascript",
+								"id": "f8dc994e-a101-4480-900e-52e36b01d6d0"
+							}
+						}
+					],
+					"id": "46461322-08c00993-9849-4b51-b5ee-4331581cdb07",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://signals.smarte.pro/api/v1/companies/google/publish/news_events",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"api",
+								"v1",
+								"companies",
+								"google",
+								"publish",
+								"news_events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3 - Nonexistent Domain (foobar-does-not-exist.com)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status is 404 for unknown domain', () => pm.response.to.have.status(404));",
+									"pm.test('Message says not found', () => pm.expect(pm.response.text().toLowerCase()).to.include('not found'));"
+								],
+								"type": "text/javascript",
+								"id": "1d35a68f-58cc-46b5-b94d-fe6b441d4206"
+							}
+						}
+					],
+					"id": "46461322-cb039c6a-ce6c-4fb3-874a-8410d1a7a3f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://signals.smarte.pro/api/v1/companies/foobar-does-not-exist.com/publish/news_events",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"api",
+								"v1",
+								"companies",
+								"foobar-does-not-exist.com",
+								"publish",
+								"news_events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC4 - Empty Domain in Path",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 404 or 400', () => pm.expect([400,404]).to.include(pm.response.code));"
+								],
+								"type": "text/javascript",
+								"id": "29292950-5520-4c9e-8d49-c8c7bc96c464"
+							}
+						}
+					],
+					"id": "46461322-65704855-549c-4739-9ae0-98e6629ca3c4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://signals.smarte.pro/api/v1/companies//publish/news_events",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"api",
+								"v1",
+								"companies",
+								"",
+								"publish",
+								"news_events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC5 - Domain with Special Characters",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status 400 or 422 for invalid domain characters', () => pm.expect([400,422]).to.include(pm.response.code));"
+								],
+								"type": "text/javascript",
+								"id": "6d2baa2a-defb-47ca-bdd4-f32d93c141c8"
+							}
+						}
+					],
+					"id": "46461322-357e8f41-0a34-4582-9c4b-8bb4ae6d4dc7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://signals.smarte.pro/api/v1/companies/!@#$%25/publish/news_events",
+							"protocol": "https",
+							"host": [
+								"signals",
+								"smarte",
+								"pro"
+							],
+							"path": [
+								"api",
+								"v1",
+								"companies",
+								"!@"
+							],
+							"hash": "$%25/publish/news_events"
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46461322-a912fd12-d8b5-4b28-81b0-733e86b3d3a1"
+		},
+		{
+			"name": "Contact Reveal (DD Test)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response statusCode is 200\", () => {",
+							"    pm.expect(jsonData.status.statusCode).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"RequestId is present and non-empty\", () => {",
+							"    pm.expect(jsonData.status.requestId).to.be.a('string').and.to.have.length.above(0);",
+							"});",
+							"",
+							"pm.test(\"Message indicates success\", () => {",
+							"    pm.expect(jsonData.status.message.toLowerCase()).to.include('success');",
+							"});",
+							"",
+							"pm.test(\"Data contains entry for given conGuid\", () => {",
+							"    pm.expect(jsonData.data).to.have.property(pm.variables.get('conGuid'));",
+							"});",
+							"",
+							"const contactData = jsonData.data[pm.variables.get('conGuid')];",
+							"pm.test(\"Contact data has status true and message Match Found\", () => {",
+							"    pm.expect(contactData.status).to.be.true;",
+							"    pm.expect(contactData.message).to.eql('Match Found');",
+							"});",
+							"",
+							"pm.test(\"ContactRevealStatus should be boolean\", () => {",
+							"    pm.expect(contactData.contactRevealStatus).to.be.a('boolean');",
+							"});",
+							"",
+							"pm.test(\"RevealType is FREE or NEW\", () => {",
+							"    pm.expect(['FREE','NEW']).to.include(contactData.revealType);",
+							"});",
+							"",
+							"// Check nested objects for presence and basic validation",
+							"pm.test(\"directDial object contains directDialFlag and statusCode\", () => {",
+							"    pm.expect(contactData).to.have.property('directDial');",
+							"    pm.expect(contactData.directDial).to.have.property('directDialFlag');",
+							"    pm.expect(contactData.directDial).to.have.property('statusCode');",
+							"});",
+							"",
+							"pm.test(\"emailRefresherResponse contains edc and status\", () => {",
+							"    pm.expect(contactData).to.have.property('emailRefresherResponse');",
+							"    pm.expect(contactData.emailRefresherResponse).to.have.property('edc');",
+							"    pm.expect(contactData.emailRefresherResponse).to.have.property('status');",
+							"});",
+							"",
+							"// Optional: add more deep field tests here based on your requirements"
+						],
+						"type": "text/javascript",
+						"id": "14e8be05-e204-455b-ad12-30bb8aee7967"
+					}
+				}
+			],
+			"id": "46461322-48de1247-cf0a-44ca-a9cb-dfa2ac39fcb9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": [\n    {\n      \"conGuid\": \"{{conGuid}}\",\n      \"compGuid\": \"{{compGuid}}\"\n    }\n  ],\n  \"revealSource\": \"{{revealSource}}\",\n  \"type\": \"{{typeContactReveal}}\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v2/reveal/contact-reveal",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"reveal",
+						"contact-reveal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Lists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Response statusCode is 200\", () => {",
+							"    pm.expect(jsonData.status.statusCode).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"RequestId is present and non-empty\", () => {",
+							"    pm.expect(jsonData.status.requestId).to.be.a('string').and.to.have.length.above(0);",
+							"});",
+							"",
+							"pm.test(\"Message indicates success\", () => {",
+							"    pm.expect(jsonData.status.message.toLowerCase()).to.include('success');",
+							"});",
+							"",
+							"pm.test(\"Account Lists array exists\", () => {",
+							"    pm.expect(jsonData.data).to.have.property('accountLists');",
+							"    pm.expect(jsonData.data.accountLists).to.be.an('array');",
+							"});",
+							"",
+							"pm.test(\"Account Lists contain expected properties\", () => {",
+							"    jsonData.data.accountLists.forEach(account => {",
+							"        pm.expect(account).to.have.property('id');",
+							"        pm.expect(account).to.have.property('listName');",
+							"        pm.expect(account).to.have.property('createdAt');",
+							"        pm.expect(account).to.have.property('public');",
+							"        pm.expect(account).to.have.property('tracked');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Pagination info is correct\", () => {",
+							"    pm.expect(jsonData.data).to.have.property('currentPage');",
+							"    pm.expect(jsonData.data).to.have.property('total');",
+							"    pm.expect(jsonData.data).to.have.property('totalPages');",
+							"    pm.expect(jsonData.data.currentPage).to.eql(pm.variables.get('pageIndex'));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "19721600-c833-44f1-b2f5-d2a2357f499d"
+					}
+				}
+			],
+			"id": "46461322-f313950c-3ce3-4bbe-9ba3-3c3e4d6b1996",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"searchText\": \"{{searchText}}\",\n    \"contentType\": \"{{contentType}}\"\n  },\n  \"type\": \"DASHBOARD\",\n  \"pagination\": {\n    \"pageSize\": {{pageSize}},\n    \"pageIndex\": {{pageIndex}}\n  }\n}\nll"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-lists",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1. Signal Category – Valid Request ({} Payload)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+							"pm.test('Response time is under 500ms', () => pm.expect(pm.response.responseTime).to.be.below(500));",
+							"pm.test('Content-Type is JSON', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'));",
+							"const jsonData = pm.response.json();",
+							"pm.test('Has required keys', () => {",
+							"    pm.expect(jsonData).to.have.property('status');",
+							"    pm.expect(jsonData.status.statusCode).to.eql(200);",
+							"    pm.expect(jsonData.status.message).to.eql('Success');",
+							"    pm.expect(jsonData).to.have.property('data');",
+							"    pm.expect(jsonData.data.length).to.eql(11);",
+							"    pm.expect(jsonData.data[0]).to.have.all.keys('id', 'name');",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "e6c09dba-1319-446b-ad3f-858c9272fd3d"
+					}
+				}
+			],
+			"id": "46461322-77a7fb11-1215-4a60-b968-0eb3eb5cd025",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Signal Category – Invalid Payload (extra param)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Returns 200 or handles unknown keys gracefully', () => {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 400]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "c5180fa7-37e0-434c-8eef-43bfe19bafbb"
+					}
+				}
+			],
+			"id": "46461322-e854fe17-2e23-43de-b11d-d372df166cb3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"invalidKey\": \"invalidValue\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Signal Category – Malformed JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Returns 400 or 500 for malformed JSON', () => {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 500]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "7c7146ed-b846-4687-b30c-f712e66be992"
+					}
+				}
+			],
+			"id": "46461322-26853570-881b-4c57-ab0f-3ab8545d6a46",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ invalid json"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Signal Category – Invalid Content-Type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Should handle unsupported media type', () => {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 415, 200]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "8c393562-9b92-4675-a0f2-29196f39dac8"
+					}
+				}
+			],
+			"id": "46461322-e6f21675-a391-4e66-9cdd-0e271e0ce086",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/plain"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Signal Category – Simulated Long Response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Warn if response time exceeds 1000ms', () => {",
+							"    if (pm.response.responseTime > 1000) {",
+							"        console.warn('⚠️ Slow response:', pm.response.responseTime + 'ms');",
+							"    }",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"id": "f2234616-0a74-42c2-b012-2d43dcba57b2"
+					}
+				}
+			],
+			"id": "46461322-8ce6b0b8-11dc-4b9e-abf6-5b04d939a70d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/signal-category",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"signal-category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lead Lists - Valid Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response has leadLists array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data).to.have.property('leadLists');",
+							"    pm.expect(jsonData.data.leadLists.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "ca8447fd-5a32-4159-8fec-7b25d7d1cd93"
+					}
+				}
+			],
+			"id": "46461322-d88e8a04-4b89-4068-af43-1ffab1a7cf0f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\"searchText\": \"\", \"contentType\": \"ALL\"},\n  \"type\": \"DASHBOARD\",\n  \"pagination\": {\"pageSize\": 10, \"pageIndex\": 1}\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/lead-list/lead-lists",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lead Lists - Invalid pageSize (0)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 or 422\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+							"});",
+							"pm.test(\"Response contains error message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('message').that.is.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "760f1094-a06a-4bc5-bed2-678b47a2d999"
+					}
+				}
+			],
+			"id": "46461322-9483cb9a-d4aa-4aff-8bf8-2c27b05c4bf4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\"searchText\": \"\", \"contentType\": \"ALL\"},\n  \"type\": \"DASHBOARD\",\n  \"pagination\": {\"pageSize\": 0, \"pageIndex\": 1}\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/lead-list/lead-lists",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"lead-lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Account - Valid Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response statusCode is 200\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.data.status.statusCode).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "3fa76790-407b-4459-8500-fe6544bbc29a"
+					}
+				}
+			],
+			"id": "46461322-244255c0-1077-4c71-bbd6-b8fd87fbb26d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"id\": \"1197\",\n    \"guids\": [\"CDB2D3064C3B4CE7\"],\n    \"limits\": {\n      \"clientName\": \"GitHub\",\n      \"limitCounts\": 1,\n      \"type\": \"ACCOUNT\",\n      \"source\": \"REMOVE\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-delete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Account - Missing id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400 or 422\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+							"});",
+							"pm.test(\"Response has error message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('message').that.is.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "ebda03fb-6626-4980-9376-1918acf79287"
+					}
+				}
+			],
+			"id": "46461322-a47eeb17-2fd1-443d-981b-c91b04a041a4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"guids\": [\"CDB2D3064C3B4CE7\"],\n    \"limits\": {\n      \"clientName\": \"GitHub\",\n      \"limitCounts\": 1,\n      \"type\": \"ACCOUNT\",\n      \"source\": \"REMOVE\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-delete",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Lead File – Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('✅ Status 200', () => pm.response.to.have.status(200));",
+							"pm.test('📂 CSV path returned', () => pm.expect(pm.response.json().data).to.include('.csv'));",
+							"pm.test('⏱ Response time < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));",
+							"",
+							"// Schema validation",
+							"const sc = pm.response.json();",
+							"pm.test('Valid schema', () => {",
+							"  pm.expect(sc).to.have.all.keys('status','data');",
+							"  pm.expect(sc.status).to.have.all.keys('statusCode','requestId','message');",
+							"});",
+							"",
+							"// Header checks",
+							"pm.test('Content-Type JSON', () => pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json'));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "2fb9231d-bf8a-4f50-92a4-fa40214079a4"
+					}
+				}
+			],
+			"id": "46461322-e4d3d953-9995-4735-8aa3-98768cb3b3d6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\":1051,\r\n        \"isTrack\":\"false\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/lead-list/downloadLeadFile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"downloadLeadFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Lead File – Invalid ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('❌ Status >=400', () => pm.expect(pm.response.code).to.be.at.least(400));",
+							"pm.test('Error structure', () => {",
+							"  const e=pm.response.json();",
+							"  pm.expect(e.status.statusCode).to.be.at.least(400);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "b2c16410-9bd6-403c-ae3e-b6d317b8eb92"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "24a4cc18-9888-427b-afaa-375ce8f6e40e"
+					}
+				}
+			],
+			"id": "46461322-33466830-6fb0-433c-a904-4db041070261",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\":1000,\r\n        \"isTrack\":\"false\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/lead-list/downloadLeadFile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"lead-list",
+						"downloadLeadFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Account File – Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('✔️CSV path', () => pm.expect(pm.response.json().data).to.include('.csv'));",
+							"pm.test('⏱ Response < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "8ba7b08b-5adc-496b-924d-1c52f9247cd6"
+					}
+				}
+			],
+			"id": "46461322-cc781d57-63dc-4f1c-bd50-6bf45a6ca7a3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"id\": 1042,\r\n        \"isTrack\":\"false\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/downloadAccountFile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"downloadAccountFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Download – Missing Body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('400 Bad Request', () => pm.response.to.have.status(400));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "6fe69a60-48c2-4075-b82c-c2c0a661aad0"
+					}
+				}
+			],
+			"id": "46461322-962f5d77-bf71-43f6-bc62-a50ab1cbd933",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/downloadAccountFile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"downloadAccountFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Track Account List – True",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"const j=pm.response.json();",
+							"pm.test('Message includes tracked', () => pm.expect(j.status.message).to.include('tracked successfully'));",
+							"pm.test('⏱ Response < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "3f3d8e79-aa6a-421d-bba6-5fc8beebde95"
+					}
+				}
+			],
+			"id": "46461322-4cb0dba8-07a0-4a8b-8065-9d32b6f0f643",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":{\"id\":{{validAccountId}},\"isTrack\":\"true\"}}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/track-untrack-account-list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"track-untrack-account-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Track Account List – False",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"pm.test('Message includes untracked', () => pm.expect(pm.response.json().status.message).to.include('untracked successfully'));",
+							"pm.test('⏱ Response < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));"
+						],
+						"type": "text/javascript",
+						"id": "a31dee16-5a8f-4b02-815e-49c200d8dac2"
+					}
+				}
+			],
+			"id": "46461322-214120a3-4729-4a67-88d3-1de640cc6d03",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":{\"id\":{{validAccountId}},\"isTrack\":\"false\"}}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/track-untrack-account-list",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"track-untrack-account-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account Save – Full Valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"const j=pm.response.json();",
+							"pm.expect(j.data.status.statusCode).to.eql(200);",
+							"pm.test('⏱ Response < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));"
+						],
+						"type": "text/javascript",
+						"id": "2effee4a-b632-453a-8626-8f3aa9cd21db"
+					}
+				}
+			],
+			"id": "46461322-4adff97d-51b9-42e4-b6ea-6ecb13e1b13f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":[{\"id\":1041,\"listName\":\"frg\",\"guids\":[\"A\",\"B\"],\"type\":\"HANDPICKED\",\"isTrack\":\"false\",\"isDefaultTrack\":\"false\"},{\"id\":1197,\"listName\":\"Tracked\",\"guids\":[\"C\",\"D\"],\"type\":\"HANDPICKED\",\"isTrack\":\"false\",\"isDefaultTrack\":\"true\",\"limits\":{\"clientName\":\"GH\",\"limitCounts\":2,\"type\":\"ACCOUNT\",\"source\":\"DEDUCT\"}}]}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-list/account-list-save",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-list",
+						"account-list-save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Limits – Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"const j=pm.response.json();",
+							"pm.expect(j.data.data).to.have.all.keys('accountLimitRemaining','totalAccountLimit');",
+							"pm.test('⏱ < 500ms', () => pm.expect(pm.response.responseTime).to.be.below(500));"
+						],
+						"type": "text/javascript",
+						"id": "91e3f7e9-070e-4f1d-a8ae-030cffcd3f4f"
+					}
+				}
+			],
+			"id": "46461322-6a24fe80-660b-45c7-a989-5e6b0f116c1d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"clientName\":\"GitHub\",\"source\":\"FETCH\"}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/fetch-limits",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"fetch-limits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Limits – No Body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('400 Bad Request', () => pm.response.to.have.status(400));"
+						],
+						"type": "text/javascript",
+						"id": "5864c321-3c20-4aec-b2d5-c1edd4dd33f6"
+					}
+				}
+			],
+			"id": "46461322-7c27dc00-f459-4ffd-8c21-f41e88759e51",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v1/account-signal/fetch-limits",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v1",
+						"account-signal",
+						"fetch-limits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Brief – Full Payload",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"pm.test('⏱ < 2000ms', () => pm.expect(pm.response.responseTime).to.be.below(2000));"
+						],
+						"type": "text/javascript",
+						"id": "151ecabb-37e4-4a9d-a718-2364d513d2af"
+					}
+				}
+			],
+			"id": "46461322-5fcb1a45-5a32-403d-96dd-61facc7015f1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"searchPayload\":{\"data\":{\"company_info\":{\"accountSignals\":{\"value\":1,\"signals\":[{\"id\":5,\"name\":\"Growth\",\"type\":\"INCLUDE\"}]}}},\"type\":\"ADVANCED_SEARCH_ACCOUNT\",\"pagination\":{\"page_size\":1,\"page_no\":1}},\"pushTask\":{\"downloadFormat\":\"CSV\",\"searchType\":\"Firmograph\",\"downloadType\":\"Single File\",\"requestDate\":\"2025-06-16T08:16:55.233Z\",\"taskName\":\"Test Export\",\"companyCount\":1,\"maxContactsPerCompany\":1,\"downloadAs\":\"Accounts\"}}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/customer-list/v2/bulk-download-save",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"customer-list",
+						"v2",
+						"bulk-download-save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Spawn Names – Body Optional",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"pm.expect(pm.response.json().data).to.be.an('array');",
+							"pm.test('⏱ < 500ms', () => pm.expect(pm.response.responseTime).to.be.below(500));"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"id": "c41a8ca5-28df-4aa6-92e2-f9c911c1b6f7"
+					}
+				}
+			],
+			"id": "46461322-f8e17248-1a24-4ee0-b8d1-1ce55a152cac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/search/v1/get-spawn-names",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"search",
+						"v1",
+						"get-spawn-names"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Limits – Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('200 OK', () => pm.response.to.have.status(200));",
+							"pm.expect(pm.response.json().status.message).to.include('updated successfully');",
+							"pm.test('⏱ < 500ms', () => pm.expect(pm.response.responseTime).to.be.below(500));"
+						],
+						"type": "text/javascript",
+						"id": "a071d21d-c4b8-4b2d-9737-d423bf271447"
+					}
+				}
+			],
+			"id": "46461322-b486e714-19dd-4cca-b298-c364efdc818c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"clientName\":\"Gitlab\",\"access\":true,\"accountLimits\":20}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/v2/limits/add-limits",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v2",
+						"limits",
+						"add-limits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Limits – Missing Field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('400 Bad Request', () => pm.response.to.have.status(400));"
+						],
+						"type": "text/javascript",
+						"id": "6886a797-11a0-4efb-b159-17a6cece8952"
+					}
+				}
+			],
+			"id": "46461322-19fff294-339f-4f6e-a98d-55ba18a55597",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"clientName\":\"Gitlab\",\"access\":true}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/v2/limits/add-limits",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v2",
+						"limits",
+						"add-limits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Org – Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('201 Created', () => pm.response.to.have.status(201));",
+							"pm.test('⏱ < 1000ms', () => pm.expect(pm.response.responseTime).to.be.below(1000));"
+						],
+						"type": "text/javascript",
+						"id": "ba97c03e-2259-4ab2-973e-33626e70fccd"
+					}
+				}
+			],
+			"id": "46461322-604bc524-4023-4cb9-acdd-1743a893e672",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"adminEmail\":\"a@b.com\",\"adminFirstName\":\"Test\",\"adminLastName\":\"User\",\"allowedroleid\":9,\"clientName\":\"testorg\",\"expiryDate\":\"2025-07-01T00:00:00Z\",\"startDate\":\"2025-06-01T00:00:00Z\",\"adminUsername\":\"a@b.com\",\"roleAssigned\":8,\"directDialAccess\":false,\"emailRefresherAccess\":true,\"clientType\":\"Regular\",\"selectedProduct\":[1],\"licenses\":[{\"licenseCount\":\"2\",\"licenseTypeName\":\"Hunter\"}],\"subscriptionType\":\"Enterprise Standard\",\"rateLimit\":1,\"accountLimit\":10,\"leadLimit\":2,\"access\":true}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/v2/clients",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v2",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Org – Missing Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('400 Bad Request', () => pm.response.to.have.status(400));",
+							"pm.test('Error code present', () => pm.expect(pm.response.json().status.statusCode).to.be.at.least(400));"
+						],
+						"type": "text/javascript",
+						"id": "14139359-5258-4123-95c4-e88c917bfc47"
+					}
+				}
+			],
+			"id": "46461322-eb219e82-8086-4b05-adb6-873aeb54b9a8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"adminFirstName\":\"Test\"}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/v2/clients",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"v2",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
