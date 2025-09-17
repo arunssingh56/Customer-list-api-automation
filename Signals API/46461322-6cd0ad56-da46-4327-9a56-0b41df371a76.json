@@ -31,6 +31,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -40,7 +43,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"data\":{\"compGuid\":\"53A15A01E32C8428\",\"dateRange\":\"ALL\",\"categoryDisplayId\":0}}"
+							"raw": "\r\n{\r\n  \"data\": {\r\n    \"compGuid\": \"53A15A01E32C8428\",\r\n    \"categoryIds\": [0]\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
