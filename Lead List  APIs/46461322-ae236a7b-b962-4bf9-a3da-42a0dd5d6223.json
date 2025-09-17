@@ -641,7 +641,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"data\": {\r\n        \"filter\": \"ALL\",\r\n        \"searchKeyword\": \"\",\r\n        \"level\": [],\r\n        \"functions\": [],\r\n        \"workLocationRegions\": {\r\n            \"regions\": [],\r\n            \"countries\": []\r\n        },\r\n        \"contactInfo\": \"\",\r\n        \"leadListId\": 6887,\r\n        \"contactScope\": {\r\n            \"revealed\": false,\r\n            \"revealBoth\": true,\r\n            \"sfExisting\": false,\r\n            \"sfBoth\": true,\r\n            \"outreachExisting\": false,\r\n            \"outreachBoth\": true\r\n        }\r\n    },\r\n    \"pagination\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
+					"raw": "{\r\n    \"data\": {\r\n        \"filter\": \"ALL\",\r\n        \"searchKeyword\": \"\",\r\n        \"level\": [],\r\n        \"revealedIds\": [],\r\n        \"functions\": [],\r\n        \"workLocationRegions\": {\r\n            \"regions\": [],\r\n            \"countries\": []\r\n        },\r\n        \"contactInfo\": \"\",\r\n        \"leadListId\": 2,\r\n        \"contactScope\": {\r\n            \"revealed\": false,\r\n            \"revealBoth\": true,\r\n            \"sfExisting\": false,\r\n            \"sfBoth\": true,\r\n            \"outreachExisting\": false,\r\n            \"outreachBoth\": true\r\n        }\r\n    },\r\n    \"pagination\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 10\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
