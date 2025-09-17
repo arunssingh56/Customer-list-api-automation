@@ -43,7 +43,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n  \"data\": {\r\n    \"compGuid\": \"53A15A01E32C8428\",\r\n    \"categoryIds\": [0]\r\n  }\r\n}"
+							"raw": "{\"data\":{\"compGuid\":\"53A15A01E32C8428\",\"dateRange\":\"ALL\",\"categoryDisplayId\":0}}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/customer-list/v1/account-signal/signals",
