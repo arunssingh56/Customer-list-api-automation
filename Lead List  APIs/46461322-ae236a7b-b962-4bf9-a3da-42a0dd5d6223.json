@@ -544,6 +544,34 @@
 		},
 		{
 			"name": "lead-list-reveal -list-by-reveal-id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e5d4780-4e56-4815-8e4b-533039710551",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response headers contain content-type\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is a valid JSON\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an(\"object\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"id": "46461322-c85d7bed-9d0d-4c9f-8820-31bf28860419",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
