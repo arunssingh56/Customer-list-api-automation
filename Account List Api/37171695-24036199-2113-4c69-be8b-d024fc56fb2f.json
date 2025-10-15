@@ -77,7 +77,8 @@
 							"});"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
 					}
 				}
 			],
@@ -93,7 +94,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "{{auth_token}}",
+						"value": "{{auth-token}}",
 						"type": "text"
 					}
 				],
