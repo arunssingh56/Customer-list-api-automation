@@ -1,0 +1,2542 @@
+{
+	"info": {
+		"_postman_id": "37171695-59febbbe-b6bf-4015-b594-89e6f0bcbc52",
+		"name": "S67 API - Mitali",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Advanced search count (Last Funding date)",
+			"item": [
+				{
+					"name": "Advanced Search Count(Last Funding Date Filter)",
+					"id": "37171695-28e442c6-1844-42b0-adbf-fc04aa587f33",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"funding\": {\r\n            \"lastFundingDate\": {\r\n                \"id\": 2,\r\n                \"tempId\": 0,\r\n                \"name\": \"In past 6 months\",\r\n                \"value\": 6,\r\n                \"type\": \"INCLUDE\"\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 50\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count - Valid Request (Past 6 Months)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65048b5f-15fd-47f8-8348-f37cc52341d7",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 300ms', function () {pm.expect(pm.response.responseTime).to.be.below(300);});",
+									"const response = pm.response.json();",
+									"pm.test('Response has Success message', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Company and Contact Count should be numeric', function () {pm.expect(parseInt(response.data.company_count)).to.be.a('number');pm.expect(parseInt(response.data.contact_count)).to.be.a('number');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-7b09f61d-6672-407f-aeb9-627572f532cb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 9 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count - Missing FilterType (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97f86fed-e19a-4a7a-adf8-710f82f1b72e",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation error', function () {pm.expect(response.status.message).to.match(/error|missing|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-6c04f625-b40d-4d95-a8fa-764fbba100d2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 6 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count - Invalid Type Field (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "67d1d17c-a602-4030-a409-4abd6484cdbd",
+								"exec": [
+									"pm.test('Should return error for invalid type', function () {pm.expect(pm.response.code).to.be.oneOf([400, 422]);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-8707a466-9790-4bf0-b1f7-cd6fcac79fb5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 6 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"INVALID_TYPE\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-a058603f-1763-437f-9167-0ec6d433dbdd"
+		},
+		{
+			"name": "Advanced Search(Last Funding Date Filter)",
+			"item": [
+				{
+					"name": "Advanced Search(Last Funding Date Filter)",
+					"id": "37171695-a046b956-2ad1-4982-a3b1-5b4affabe968",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"funding\": {\r\n            \"lastFundingDate\": {\r\n                \"id\": 2,\r\n                \"tempId\": 0,\r\n                \"name\": \"In past 6 months\",\r\n                \"value\": 6,\r\n                \"type\": \"INCLUDE\"\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 50\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search - Valid Request (Past 6 Months)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70f78803-26a4-486c-b638-b86c45e11821",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 500ms', function () {pm.expect(pm.response.responseTime).to.be.below(500);});",
+									"const response = pm.response.json();",
+									"pm.test('Response has Success message', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains data array', function () {pm.expect(response.data).to.be.an('array');});",
+									"pm.test('Each record should have required fields', function () {",
+									"   response.data.forEach(function(item) {",
+									"       pm.expect(item).to.have.property('pc_con_guid');",
+									"       pm.expect(item).to.have.property('ln_con_full_name');",
+									"       pm.expect(item).to.have.property('rc_work_loc_country');",
+									"       pm.expect(item).to.have.property('ln_con_job_title_en');",
+									"       pm.expect(item).to.have.property('accounts_filter');",
+									"   });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-c7e2c31b-a72c-442d-b70f-572b96ad3039",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 6 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search - Missing FilterType (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f309edda-515c-4595-9682-115036664583",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation or error message', function () {pm.expect(response.status.message).to.match(/error|missing|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-a9a8dba7-1fdf-415e-aee0-2bfac181ffd0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 6 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search - Invalid Type Field (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d1cbd875-d4c7-4a13-b55f-53d88c4f2cdc",
+								"exec": [
+									"pm.test('Should return error for invalid type', function () {pm.expect(pm.response.code).to.be.oneOf([400, 422]);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-6caf662f-c985-4e85-9976-f972e13d8252",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"funding\": {\n            \"lastFundingDate\": {\n                \"id\": 2,\n                \"tempId\": 0,\n                \"name\": \"In past 6 months\",\n                \"value\": 6,\n                \"type\": \"INCLUDE\"\n            }\n        }\n    },\n    \"type\": \"INVALID_TYPE\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-556cd2cb-7a1f-4a0c-9ecc-60f5d5ff1ddd"
+		},
+		{
+			"name": "Save Page Size",
+			"item": [
+				{
+					"name": "Save Page Size - Invalid Page Size (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e3a9d11-7ccd-48b7-a44b-3a6e85194211",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation or error message', function () {pm.expect(response.status.message).to.match(/error|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-23481c12-ed8c-429d-ad9f-69c8dc6e9902",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pagination\": {\n        \"pageSize\": -10\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/save-page-preferences",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"save-page-preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Page Size - Missing Pagination Object (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3522747b-b8bb-4ed8-ae34-a77b847a7e04",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should indicate missing pagination or invalid payload', function () {pm.expect(response.status.message).to.match(/missing|invalid|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-8a7b3e7c-27ba-4ff3-a283-a027177bf2fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/save-page-preferences",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"save-page-preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Page Size - Valid Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df43301f-9bd3-4bd1-b8e6-f980fb52bac2",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 300ms', function () {pm.expect(pm.response.responseTime).to.be.below(300);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Page size returned matches request', function () {pm.expect(response.data.pageSize).to.eql(100);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-c6080c95-fa61-4919-b005-f0691101bff7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pagination\": {\n        \"pageSize\": 100\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/save-page-preferences",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"save-page-preferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Page Size",
+					"id": "37171695-42bb25f1-af51-480b-9541-214fc4c2ef91",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pagination\": {\r\n            \"pageSize\": 100\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/save-page-preferences",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"save-page-preferences"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-9edcc5a8-a9a8-4663-823e-219dc2bcfbeb"
+		},
+		{
+			"name": "Get Page size",
+			"item": [
+				{
+					"name": "Get Page Size",
+					"id": "37171695-e2598170-8322-4905-9b90-bf73677daa47",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/get-page-size",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"get-page-size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Page Size - Valid Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "526afc8a-b00d-4d23-bcbd-7aac44ed9f46",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 300ms', function () {pm.expect(pm.response.responseTime).to.be.below(300);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Page size is numeric', function () {pm.expect(response.data.pageSize).to.be.a('number');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-c0deeac4-30a1-4ecc-a1a3-f12822a2ca1b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/get-page-size",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"get-page-size"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Page Size - Invalid Method (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a050f154-2b23-46e4-9e6d-1a164fd91ce4",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"pm.test('Should return method not allowed or error message', function () {",
+									"   const response = pm.response.json();",
+									"   pm.expect(response.status.message).to.match(/error|method|not allowed/i);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-a33a82a8-30c2-444d-bf21-ac21b03d4b40",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v1/user-page-preferences/get-page-size",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v1",
+								"user-page-preferences",
+								"get-page-size"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-94c41e0d-383d-4c8b-83d1-be340555870b"
+		},
+		{
+			"name": "Lead Open in search",
+			"item": [
+				{
+					"name": "lead open in search",
+					"id": "37171695-5d50a362-1f04-4659-8344-d5aa82108a92",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"filter\": \"ALL\",\r\n        \"searchKeyword\": \"\"\r\n    },\r\n    \"pagination\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 25\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-list/v1/lead-list/lead-records-guids",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"lead-list",
+								"lead-records-guids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lead open in search",
+					"id": "37171695-f917c7a3-5635-4483-bd96-b6ae5aa98425",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"leadListId\": \"8594\",\r\n        \"filter\": \"ALL\",\r\n        \"searchKeyword\": \"\"\r\n    },\r\n    \"pagination\": {\r\n        \"pageIndex\": 1,\r\n        \"pageSize\": 25\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-list/v1/lead-list/lead-records-guids",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"lead-list",
+								"lead-records-guids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lead Open in Search - List Retrieval",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef6fdd7a-a3c8-43a4-8ad2-0e032fb78fbf",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 500ms', function () {pm.expect(pm.response.responseTime).to.be.below(500);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains data array', function () {pm.expect(response.data).to.be.an('array');});",
+									"pm.test('Each list should have required fields', function () {",
+									"    response.data.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('id');",
+									"        pm.expect(item).to.have.property('listName');",
+									"        pm.expect(item).to.have.property('status');",
+									"        pm.expect(item).to.have.property('recordCount');",
+									"        pm.expect(item).to.have.property('updatedAt');",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-a7c544d8-2360-40de-9125-9b804285cb88",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filter\": \"ALL\",\n        \"searchKeyword\": \"\"\n    },\n    \"pagination\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 25\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/v1/lead-list/lead-records-guids",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"v1",
+								"lead-list",
+								"lead-records-guids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lead Open in Search - Lead GUID Retrieval by List ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5417ebfe-475a-4aa4-b2c2-dcf627577f8e",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 600ms', function () {pm.expect(pm.response.responseTime).to.be.below(600);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Data should be an array of GUIDs', function () {pm.expect(response.data).to.be.an('array');});",
+									"pm.test('All GUIDs should be strings of length 32', function () {",
+									"   response.data.forEach(function(guid) {pm.expect(guid).to.match(/^[A-F0-9]{32}$/);});",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-e8ff343b-1bbd-4db2-8bfb-b8b7d684c18f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"leadListId\": \"8594\",\n        \"filter\": \"ALL\",\n        \"searchKeyword\": \"\"\n    },\n    \"pagination\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 25\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-list/v1/lead-list/lead-records-guids",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"lead-list",
+								"lead-records-guids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lead Open in Search - Missing Filter Field (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "647bcb17-1057-42f8-882c-16503126f004",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation or error message', function () {pm.expect(response.status.message).to.match(/error|invalid|missing/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-62ed8ca4-16c1-47f9-99da-7ea035ce0b84",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"searchKeyword\": \"\"\n    },\n    \"pagination\": {\n        \"pageIndex\": 1,\n        \"pageSize\": 25\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-list/v1/lead-list/lead-records-guids",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-list",
+								"v1",
+								"lead-list",
+								"lead-records-guids"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-2346b5b5-4aab-4136-a49d-b49eba02af2c"
+		},
+		{
+			"name": "Save search Lead last funding date",
+			"item": [
+				{
+					"name": "Save Search Lead(Last Funding Date Filter)",
+					"id": "37171695-bb75d021-35b0-4156-b184-319f91128165",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"asdads\",\r\n        \"filterJson\": {\r\n            \"funding\": {\r\n                \"lastFundingDate\": {\r\n                    \"id\": 2,\r\n                    \"tempId\": 0,\r\n                    \"name\": \"In past 6 months\",\r\n                    \"value\": 6,\r\n                    \"type\": \"INCLUDE\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead - Valid Request (Past 6 Months)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d3e6b26-4fdb-43de-83a2-5217e1d2fdb4",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 100ms', function () {pm.expect(pm.response.responseTime).to.be.below(100);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains searchId', function () {pm.expect(response.data).to.have.property('searchId');});",
+									"pm.test('SearchId is numeric', function () {pm.expect(response.data.searchId).to.be.a('number');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-bd206bbe-1578-42f9-9206-1a45e81bcd74",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"asdads\",\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": 6,\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead - Missing Name Field (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8746330e-5fcc-4696-b074-461dbf546d88",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation or missing field error', function () {pm.expect(response.status.message).to.match(/error|missing|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-a75a45d0-18f3-4b57-ae2c-1a66dfbe6366",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": 6,\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead - Invalid Filter Value (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b937870-da01-485e-ab63-4baa9c3197fa",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should indicate invalid value type error', function () {pm.expect(response.status.message).to.match(/invalid|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-fab7b1b1-234a-4c4e-881a-08f0add841a1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"asdads\",\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": \"invalid\",\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-34e84aa2-a9b1-481c-a515-a135a0323c6f"
+		},
+		{
+			"name": "Save search Acc last funding date",
+			"item": [
+				{
+					"name": "Save Search Account(Last Funding Date Filter)",
+					"id": "37171695-f3d30d20-2738-4872-be5b-54ca1ac69c17",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"asdads\",\r\n        \"filterJson\": {\r\n            \"funding\": {\r\n                \"lastFundingDate\": {\r\n                    \"id\": 2,\r\n                    \"tempId\": 0,\r\n                    \"name\": \"In past 6 months\",\r\n                    \"value\": 6,\r\n                    \"type\": \"INCLUDE\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account - Valid Request (Past 6 Months)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e56b0e5-2d52-4cd8-804b-7c635de8ec98",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 100ms', function () {pm.expect(pm.response.responseTime).to.be.below(100);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains searchId', function () {pm.expect(response.data).to.have.property('searchId');});",
+									"pm.test('SearchId is numeric', function () {pm.expect(response.data.searchId).to.be.a('number');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-cc57df77-15cc-4456-8cd0-0a5370fee3d7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"asdads\",\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": 6,\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account - Missing Name Field (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d95ebf65-c4ab-457c-b341-2f374b60dba9",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return validation or missing field error', function () {pm.expect(response.status.message).to.match(/error|missing|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-5dd06532-15b1-4879-a132-eaba3a22f636",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": 6,\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account - Invalid Filter Value (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb495b57-a06e-4fda-b882-c9e7b2d84825",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should indicate invalid value type error', function () {pm.expect(response.status.message).to.match(/invalid|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-1960e8c2-d190-4a65-9232-15286cb12dd6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"asdads\",\n        \"filterJson\": {\n            \"funding\": {\n                \"lastFundingDate\": {\n                    \"id\": 2,\n                    \"tempId\": 0,\n                    \"name\": \"In past 6 months\",\n                    \"value\": \"invalid\",\n                    \"type\": \"INCLUDE\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-5f6d513f-61c6-4c60-8b25-d6610c4b7177"
+		},
+		{
+			"name": "Get all Locations",
+			"item": [
+				{
+					"name": "Get all locations",
+					"id": "37171695-06672e66-0e46-4c84-9398-d9103b35821b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"value\": \"\"\r\n    },\r\n    \"type\": \"BY_REGION\",\r\n    \"pagination\": {\r\n        \"page_size\": 50,\r\n        \"page_no\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/generic/location",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"generic",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Locations - Valid Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea3cc09d-f070-49c8-bdaa-31fdecc40bc6",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 600ms', function () {pm.expect(pm.response.responseTime).to.be.below(600);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains data array', function () {pm.expect(response.data).to.be.an('array');});",
+									"pm.test('Each location should have name and source fields', function () {",
+									"    response.data.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('name');",
+									"        pm.expect(item).to.have.property('source');",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-fb3c9222-a676-4d0a-8ca6-5e7edeb52f67",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"value\": \"\"\n    },\n    \"type\": \"BY_REGION\",\n    \"pagination\": {\n        \"page_size\": 50,\n        \"page_no\": 1\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/generic/location",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"generic",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Locations - Invalid Pagination (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19cda53c-bdcc-4f56-a44a-42418131a7e2",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error or validation message', function () {pm.expect(response.status.message).to.match(/error|validation/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-9de4ceda-f403-42fe-98cd-bfad53f858d3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"value\": \"\"\n    },\n    \"type\": \"BY_REGION\",\n    \"pagination\": {\n        \"page_size\": 0,\n        \"page_no\": 1\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/generic/location",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"generic",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Locations - Missing Filter Value (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b8671718-1814-451e-823c-c0a4d19a7814",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error due to missing filter value', function () {pm.expect(response.status.message).to.match(/error|invalid|missing/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-14803faa-444c-4a82-ad56-cc65c931c226",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {},\n    \"type\": \"BY_REGION\",\n    \"pagination\": {\n        \"page_size\": 50,\n        \"page_no\": 1\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/generic/location",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"generic",
+								"location"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-599148e0-9df4-46fd-a2b7-fe1cb398eda5"
+		},
+		{
+			"name": "Advanced Search(Location Filter)",
+			"item": [
+				{
+					"name": "Advanced Search(Location Filter)",
+					"id": "37171695-0eebff4f-5bf1-46eb-b357-369ffcd730f5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"filterType\": \"Applied Search\",\r\n        \"person_info\": {\r\n            \"location\": {\r\n                \"regions\": [\r\n                    {\r\n                        \"name\": \"North America\",\r\n                        \"source\": \"Region\",\r\n                        \"id\": \"North America\",\r\n                        \"type\": \"INCLUDE\"\r\n                    }\r\n                ],\r\n                \"type\": \"By Region\"\r\n            }\r\n        }\r\n    },\r\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\r\n    \"pagination\": {\r\n        \"page_no\": 1,\r\n        \"page_size\": 50\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Location Filter - Valid Request (North America)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e239a1f0-be2e-44ba-ae86-5b1b3c2fd742",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 500ms', function () {pm.expect(pm.response.responseTime).to.be.below(500);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains data array', function () {pm.expect(response.data).to.be.an('array');});",
+									"pm.test('Each lead should have required fields like full name, job title, and location', function () {",
+									"    response.data.forEach(function(item) {",
+									"        pm.expect(item).to.have.property('ln_con_full_name');",
+									"        pm.expect(item).to.have.property('ln_con_job_title_en');",
+									"        pm.expect(item).to.have.property('rc_work_loc_country');",
+									"        pm.expect(item).to.have.property('rc_work_loc_state');",
+									"        pm.expect(item).to.have.property('rc_work_loc_city');",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-7a60d828-fe6b-4e9d-99b5-429303ef1562",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"person_info\": {\n            \"location\": {\n                \"regions\": [\n                    {\n                        \"name\": \"North America\",\n                        \"source\": \"Region\",\n                        \"id\": \"North America\",\n                        \"type\": \"INCLUDE\"\n                    }\n                ],\n                \"type\": \"By Region\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Location Filter - Invalid Region Name (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ffd9a68-4b8f-4c80-84ad-dfe9c73f01b7",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error or invalid region message', function () {pm.expect(response.status.message).to.match(/error|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-397c745b-6520-4535-8d6c-3be48f047980",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"person_info\": {\n            \"location\": {\n                \"regions\": [\n                    {\n                        \"name\": \"InvalidRegion\",\n                        \"source\": \"Region\",\n                        \"id\": \"InvalidRegion\",\n                        \"type\": \"INCLUDE\"\n                    }\n                ],\n                \"type\": \"By Region\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Location Filter - Missing Location Filter (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb6d8458-83a7-4d83-8664-b5d19fbe4bde",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return missing filter value error', function () {pm.expect(response.status.message).to.match(/missing|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-ea7808cb-e0c7-4257-b505-1c714a23a814",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\"\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count(Location Filter)",
+					"id": "37171695-c762ddb8-9743-4f9c-8b43-b573b529a084",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count Location Filter - Valid Request (North America)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f032ac81-901e-46f2-97c5-13e80fa858ca",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 800ms', function () {pm.expect(pm.response.responseTime).to.be.below(800);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Response contains company_count and contact_count', function () {",
+									"    pm.expect(response.data).to.have.property('company_count');",
+									"    pm.expect(response.data).to.have.property('contact_count');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-ba503306-b396-4e2c-b82e-793705c34d1b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"person_info\": {\n            \"location\": {\n                \"regions\": [\n                    {\n                        \"name\": \"North America\",\n                        \"source\": \"Region\",\n                        \"id\": \"North America\",\n                        \"type\": \"INCLUDE\"\n                    }\n                ],\n                \"type\": \"By Region\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count Location Filter - Invalid Region Name (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "511184a4-9caf-4d92-88df-2e8a69105fa5",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error or invalid region message', function () {pm.expect(response.status.message).to.match(/error|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-ff443c85-74c2-48fb-bf5a-1a92c01bd0fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\",\n        \"person_info\": {\n            \"location\": {\n                \"regions\": [\n                    {\n                        \"name\": \"InvalidRegion\",\n                        \"source\": \"Region\",\n                        \"id\": \"InvalidRegion\",\n                        \"type\": \"INCLUDE\"\n                    }\n                ],\n                \"type\": \"By Region\"\n            }\n        }\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advanced Search Count Location Filter - Missing Location Filter (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e308a003-2f17-404e-b2ee-12e1d3499448",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return missing filter value error', function () {pm.expect(response.status.message).to.match(/missing|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-65db2ef9-9753-4e76-8b12-9f7448a555ba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"filterType\": \"Applied Search\"\n    },\n    \"type\": \"ADVANCED_SEARCH_LEAD\",\n    \"pagination\": {\n        \"page_no\": 1,\n        \"page_size\": 50\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/search/v4/advanced-search-count",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"search",
+								"v4",
+								"advanced-search-count"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-42cf5959-1f83-456a-b186-6f67b002515e"
+		},
+		{
+			"name": "Save Search Lead(Location Filter)",
+			"item": [
+				{
+					"name": "Save Search Lead(Location Filter)",
+					"id": "37171695-19225f7d-76a1-4caf-a4f9-cc2553009975",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"sdasds\",\r\n        \"filterJson\": {\r\n            \"person_info\": {\r\n                \"location\": {\r\n                    \"regions\": [\r\n                        {\r\n                            \"name\": \"North America\",\r\n                            \"source\": \"Region\",\r\n                            \"id\": \"North America\",\r\n                            \"type\": \"INCLUDE\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"By Region\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead Location Filter - Valid Request (North America)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa7e786b-7efa-48a6-8200-9f4a8f8e1439",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 100ms', function () {pm.expect(pm.response.responseTime).to.be.below(100);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Search ID is returned', function () {pm.expect(response.data).to.have.property('searchId');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-1dc16db1-1db9-4a7b-8004-2f24686f36c6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {\n            \"person_info\": {\n                \"location\": {\n                    \"regions\": [\n                        {\n                            \"name\": \"North America\",\n                            \"source\": \"Region\",\n                            \"id\": \"North America\",\n                            \"type\": \"INCLUDE\"\n                        }\n                    ],\n                    \"type\": \"By Region\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead Location Filter - Invalid Region Name (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ff6d77a-d97c-4d06-a27b-555a97220b70",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error or invalid region message', function () {pm.expect(response.status.message).to.match(/error|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-35fc1f10-da15-4350-9181-a75c5871953f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {\n            \"person_info\": {\n                \"location\": {\n                    \"regions\": [\n                        {\n                            \"name\": \"InvalidRegion\",\n                            \"source\": \"Region\",\n                            \"id\": \"InvalidRegion\",\n                            \"type\": \"INCLUDE\"\n                        }\n                    ],\n                    \"type\": \"By Region\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Lead Location Filter - Missing Location Filter (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd754a10-e727-4077-91b4-fffbe33d59cd",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return missing filter value error', function () {pm.expect(response.status.message).to.match(/missing|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-725dddb6-b496-4961-9b29-0718fbc344b0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {}\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-lead",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-lead"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-c177b690-f29b-4a23-9822-9f14f74b34b5"
+		},
+		{
+			"name": "Save Search Account(Location Filter)",
+			"item": [
+				{
+					"name": "Save Search Account(Location Filter)",
+					"id": "37171695-79b93f7c-6bc9-4918-aa0c-dd6b3481fa85",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"sdasds\",\r\n        \"filterJson\": {\r\n            \"person_info\": {\r\n                \"location\": {\r\n                    \"regions\": [\r\n                        {\r\n                            \"name\": \"North America\",\r\n                            \"source\": \"Region\",\r\n                            \"id\": \"North America\",\r\n                            \"type\": \"INCLUDE\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"By Region\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account Location Filter - Valid Request (North America)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20016676-a8e3-47d2-b5a1-2c320700193c",
+								"exec": [
+									"pm.test('Status code is 200', function () {pm.response.to.have.status(200);});",
+									"pm.test('Response time is under 100ms', function () {pm.expect(pm.response.responseTime).to.be.below(100);});",
+									"const response = pm.response.json();",
+									"pm.test('Response message is Success', function () {pm.expect(response.status.message).to.eql('Success');});",
+									"pm.test('Search ID is returned', function () {pm.expect(response.data).to.have.property('searchId');});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-703cb23c-f2a4-4b4c-899f-8dfbe659e2e5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {\n            \"person_info\": {\n                \"location\": {\n                    \"regions\": [\n                        {\n                            \"name\": \"North America\",\n                            \"source\": \"Region\",\n                            \"id\": \"North America\",\n                            \"type\": \"INCLUDE\"\n                        }\n                    ],\n                    \"type\": \"By Region\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account Location Filter - Invalid Region Name (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "666f0f26-93ea-48d5-9351-104a6945f0b9",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return error or invalid region message', function () {pm.expect(response.status.message).to.match(/error|invalid/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-9d2a01f8-8859-4d89-95de-6a63bce09833",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {\n            \"person_info\": {\n                \"location\": {\n                    \"regions\": [\n                        {\n                            \"name\": \"InvalidRegion\",\n                            \"source\": \"Region\",\n                            \"id\": \"InvalidRegion\",\n                            \"type\": \"INCLUDE\"\n                        }\n                    ],\n                    \"type\": \"By Region\"\n                }\n            }\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Search Account Location Filter - Missing Location Filter (Negative Test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66809229-8699-475e-8c5d-ca464e75802b",
+								"exec": [
+									"pm.test('Status code should not be 200', function () {pm.expect(pm.response.code).not.eql(200);});",
+									"const response = pm.response.json();",
+									"pm.test('Should return missing filter value error', function () {pm.expect(response.status.message).to.match(/missing|error/i);});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "37171695-54dc3d08-479a-480b-91a2-2fdb2094defe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"sdasds\",\n        \"filterJson\": {}\n    }\n}"
+						},
+						"url": {
+							"raw": "{{base-urlqc3}}/customer-data/v2/contact-filter/v2/search-account",
+							"host": [
+								"{{base-urlqc3}}"
+							],
+							"path": [
+								"customer-data",
+								"v2",
+								"contact-filter",
+								"v2",
+								"search-account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "37171695-b019728d-efd0-4b3d-b40c-a5e87340c996"
+		}
+	]
+}
